@@ -5,8 +5,9 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 3f;
     public Transform projectile;
-    private bool shot = false;
 
+    private bool shot = false;
+    private float timePassed = 0f;
     private Rigidbody2D playerBody;
 
 	// Use this for initialization
@@ -25,23 +26,42 @@ public class PlayerController : MonoBehaviour {
         {
             transform.position += new Vector3(1 * Time.deltaTime * speed, 0, 0);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && shot == false)
         {
-            
-        }
+            shot = true;
+            timePassed = 0f;
+        }       
         
+        if (shot == false)
+        {
+            projectile.position = transform.position;
+        }
+
     }
 
     void LaunchProjectile()
     {
-
+        projectile.position += new Vector3(0, 3 * speed * Time.deltaTime, 0);
+        timePassed += Time.deltaTime;
     }
 
     void FixedUpdate ()
     {
         if (shot)
         {
-            LaunchProjectile();
+            if (timePassed > 0.5)
+            {
+                shot = false;
+                timePassed = 0f;
+            }
+            else
+            {
+                LaunchProjectile();
+            }
+        }
+        else
+        {
+            projectile.position = transform.position;
         }
     }
 
