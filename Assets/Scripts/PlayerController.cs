@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (shot)
         {
-            if (timePassed > 0.5)
+            if (timePassed > 0.5f)
             {
                 shot = false;
                 timePassed = 0f;
