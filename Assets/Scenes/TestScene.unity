@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 626081898}
   - 212: {fileID: 626081897}
+  - 114: {fileID: 626081899}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -143,6 +144,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &626081899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 626081896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e457270f461512f40935d4378bc5faf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &730227337
 GameObject:
   m_ObjectHideFlags: 0
