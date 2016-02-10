@@ -20,12 +20,14 @@ public class EnemyController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        float changeTime = 2 * Time.deltaTime;
+        double constantTime = 0.5;
         transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
         timePassed += Time.deltaTime;
-        if (timePassed > 2)
+        if (timePassed > changeTime + 2)
         {
             direction *= -1;
+            transform.position += new Vector3(0, -1 * (float)constantTime, 0);
             timePassed = 0f;
         }
 
