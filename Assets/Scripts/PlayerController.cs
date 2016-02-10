@@ -4,13 +4,14 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float speed = 3f;
+    public Transform projectile;
+    private bool shot = false;
+
     private Rigidbody2D playerBody;
-    private Transform player;
 
 	// Use this for initialization
 	void Start ()
     {
-	
 	}
 	
 	// Update is called once per frame
@@ -24,19 +25,24 @@ public class PlayerController : MonoBehaviour {
         {
             transform.position += new Vector3(1 * Time.deltaTime * speed, 0, 0);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
+        }
+        
+    }
+
+    void LaunchProjectile()
+    {
+
     }
 
     void FixedUpdate ()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.A))
+        if (shot)
         {
-            transform.position += new Vector3(-1 * Time.deltaTime * speed, 0, 0);
+            LaunchProjectile();
         }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.position += new Vector3(1 * Time.deltaTime * speed, 0, 0);
-        }*/
     }
 
     //Daniel Choi is a demigod and deminoob
