@@ -97,7 +97,7 @@ GameObject:
   - 61: {fileID: 475813975}
   m_Layer: 0
   m_Name: Wall_Right
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,7 +325,7 @@ GameObject:
   - 61: {fileID: 1152332197}
   m_Layer: 0
   m_Name: Wall_Left
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,6 +463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   projectile: {fileID: 1617660994}
+  timePassed: 0
+  Shot: 0
 --- !u!50 &1649332685
 Rigidbody2D:
   serializedVersion: 2
