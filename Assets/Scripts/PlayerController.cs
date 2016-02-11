@@ -5,7 +5,8 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed = 3f;
-    public Transform projectile;
+    private Transform projectile;
+    public Transform whatToCopy;
 
     public float timePassed;
     public bool Shot;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         Shot = false;
         timePassed = 0f;
+        projectile = Instantiate(whatToCopy, transform.position, transform.rotation) as Transform;
     }
 
     // Update is called once per frame
@@ -51,6 +53,12 @@ public class PlayerController : MonoBehaviour
         {
             projectile.position = transform.position;
         }
+    }
+
+    public void CreateNewProjectile()
+    {
+        projectile = Instantiate(whatToCopy, transform.position, transform.rotation) as Transform;
+        projectile.position = transform.position;
     }
 
 }

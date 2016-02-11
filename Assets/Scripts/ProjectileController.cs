@@ -21,7 +21,7 @@ public class ProjectileController : MonoBehaviour {
 	void Update () {
         if (playerScript.Shot)
         {
-            if (playerScript.timePassed > 0.1f)
+            if (playerScript.timePassed > 0.1f && playerScript.timePassed < 0.3f)
             {
                 projColl.isTrigger = false;
             }
@@ -37,6 +37,8 @@ public class ProjectileController : MonoBehaviour {
         if (coll.gameObject.tag == "Aliens")
         {
             Destroy(coll.gameObject);
+            playerScript.CreateNewProjectile();
+            projColl.isTrigger = true;
         }
         hitTarget = true;
     }
