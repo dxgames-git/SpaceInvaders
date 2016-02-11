@@ -5,30 +5,34 @@ using System.Collections;
 public class EnemyController : MonoBehaviour {
 
     private Transform Alien;
-    private float speed = 1f;
-
-    private float timePassed;
+    private float speed = 20f;
     private float direction;
-
+    private float timePassed;
 	// Use this for initialization
 	void Start () {
-        //Heesoo is a Newb   
+        //Heesoo is a God  
         direction = 1f;
-        timePassed = 0f;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        float changeTime = 2 * Time.deltaTime;
-        double constantTime = 0.5;
-        transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
-        timePassed += Time.deltaTime;
-        if (timePassed > changeTime + 2)
+    {   if (timePassed > 1)
         {
-            direction *= -1;
-            transform.position += new Vector3(0, -1 * (float)constantTime, 0);
+            transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
             timePassed = 0f;
+        }
+        timePassed += Time.deltaTime;
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Walls")
+        {
+            direction *= -1f;
+        }
+        else if (coll.gameObject.tag == "Projectile")
+        {
+            Destroy(coll.gameObject);
         }
 
     }
