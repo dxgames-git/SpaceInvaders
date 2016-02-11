@@ -1,0 +1,17 @@
+Heesoo:
+- Make it so projectile isn't embedded in player, and it duplicates a projectile
+- Make and configure colliders on player and projectiles
+- Set up defense walls with colliders and destruction
+
+Daniel:
+- Make side walls and make Rigidbody2D & Box Collider on Alien
+- Making multiple aliens, synchronizing their movement
+- Make random aliens shoot projectile, making sure that either 
+	1. Only the bottom row aliens shoot OR
+	2. Alien projectiles don't affect other aliens (probably easier)
+
+Todo General:
+- Score
+- Bosses
+- Different types of aliens with different scores
+- Proper background and music
