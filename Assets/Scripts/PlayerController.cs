@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private Transform projectile;
     public Transform whatToCopy;
 
-    public float timePassed;
     public bool Shot;
     private Rigidbody2D playerBody;
 
@@ -16,8 +15,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Shot = false;
-        timePassed = 0f;
-        projectile = Instantiate(whatToCopy, transform.position, transform.rotation) as Transform;
     }
 
     // Update is called once per frame
@@ -34,24 +31,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Shot = true;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (Shot)
-        {
-            if (timePassed > 0.5)
-            {
-                Shot = false;
-                timePassed = 0f;
-            }
-            projectile.position += new Vector3(0, 3 * speed * Time.deltaTime, 0);
-            timePassed += Time.deltaTime;
-        }
-        else
-        {
-            projectile.position = transform.position;
+            CreateNewProjectile();
         }
     }
 

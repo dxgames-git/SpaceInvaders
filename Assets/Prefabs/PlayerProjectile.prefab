@@ -74,7 +74,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projDirection: 0
-  hitTarget: 0
 --- !u!212 &21240500
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -97,11 +97,7 @@ GameObject:
   - 61: {fileID: 475813975}
   m_Layer: 0
   m_Name: Wall_Right
-<<<<<<< HEAD
-  m_TagString: Wall
-=======
   m_TagString: Walls
->>>>>>> origin/master
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,11 +343,7 @@ GameObject:
   - 61: {fileID: 1152332197}
   m_Layer: 0
   m_Name: Wall_Left
-<<<<<<< HEAD
-  m_TagString: Wall
-=======
   m_TagString: Walls
->>>>>>> origin/master
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,7 +417,7 @@ GameObject:
   - 61: {fileID: 1649332688}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -442,12 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-<<<<<<< HEAD
-  projectile: {fileID: 1617660994}
-=======
   whatToCopy: {fileID: 476544, guid: 834f7104564a9474bbcc60f431f75a35, type: 2}
->>>>>>> origin/master
-  timePassed: 0
   Shot: 0
 --- !u!50 &1649332685
 Rigidbody2D:
