@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ProjectileLauncher
 {
 
     public float speed = 3f;
+
     private Transform projectile;
     public Transform whatToCopy;
-
     public bool Shot;
+
     private Rigidbody2D playerBody;
 
     // Use this for initialization
@@ -39,6 +40,24 @@ public class PlayerController : MonoBehaviour
     {
         projectile = Instantiate(whatToCopy, transform.position, transform.rotation) as Transform;
         projectile.position = transform.position;
+        GameObject test = new GameObject("TheResponsibleTest");
+        test.transform.parent = transform;
+        test.tag = "Responsible";
+    }
+
+    public bool isShot()
+    {
+        return Shot;
+    }
+
+    public void changeShot(bool a)
+    {
+        Shot = a;
+    }
+
+    public string toString()
+    {
+        return "Player";
     }
 
 }

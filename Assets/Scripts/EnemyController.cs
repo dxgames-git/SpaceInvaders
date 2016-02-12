@@ -2,15 +2,22 @@
 using System.Collections;
 
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour, ProjectileLauncher
+{
 
     private Transform Alien;
     private float speed = 20f;
     private float direction;
     private float timePassed;
-	// Use this for initialization
-	void Start () {
+
+    public bool Shot;
+    private Transform projectile;
+    public Transform whatToCopy;
+
+    // Use this for initialization
+    void Start () {
         //Heesoo is a God  
+        Shot = false;
         direction = 1f;
     }
 
@@ -20,8 +27,18 @@ public class EnemyController : MonoBehaviour {
         {
             transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
             timePassed = 0f;
+            Shot = true;
+            CreateNewProjectile();
         }
         timePassed += Time.deltaTime;
+
+        //test
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Shot = true;
+            //CreateNewProjectile();
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -35,6 +52,30 @@ public class EnemyController : MonoBehaviour {
             Destroy(coll.gameObject);
         }
 
+    }
+
+    public void CreateNewProjectile()
+    {
+        projectile = Instantiate(whatToCopy, transform.position, transform.rotation) as Transform;
+        projectile.position = transform.position;
+        GameObject test = new GameObject("TheAlienTest");
+        test.transform.parent = transform;
+        test.tag = "Responsible";
+    }
+
+    public bool isShot()
+    {
+        return Shot;
+    }
+
+    public void changeShot(bool a)
+    {
+        Shot = a;
+    }
+
+    public string toString()
+    {
+        return "Alien";
     }
 
 }

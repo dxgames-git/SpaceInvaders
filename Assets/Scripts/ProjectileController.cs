@@ -3,28 +3,38 @@ using System.Collections;
 
 public class ProjectileController : MonoBehaviour {
 
-    public float projDirection;
+    public int projDirection;
 
     float timePassed;
     Collider2D projColl;
-
-    PlayerController playerScript;
+    ProjectileLauncher playerScript;
 
 	// Use this for initialization
 	void Start ()
     {
         timePassed = 0f;
-        projDirection = 1f;
 
-        GameObject thePlayer = GameObject.Find("Player");
-        playerScript = thePlayer.GetComponent<PlayerController>();
+        GameObject test = GameObject.FindGameObjectWithTag("Responsible");
+        GameObject theShooter = test.transform.parent.gameObject;
+        if (test.name.Equals("TheAlienTest"))
+        {
+            playerScript = theShooter.GetComponent<EnemyController>();
+            projDirection = -1;
+        }
+        else
+        {
+            playerScript = theShooter.GetComponent<PlayerController>();
+            projDirection = 1;
+        }
+        DestroyImmediate(test);
+
         projColl = gameObject.GetComponent<BoxCollider2D>();
         projColl.isTrigger = true;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (playerScript.Shot)
+        if (playerScript.isShot())
         {
             if (timePassed > 0.1f && timePassed < 0.3f)
             {
@@ -43,11 +53,11 @@ public class ProjectileController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (playerScript.Shot)
+        if (playerScript.isShot())
         {
             if (timePassed > 2f)
             {
-                playerScript.Shot = false;
+                playerScript.changeShot(false);
                 timePassed = 0f;
             }
             transform.position += new Vector3(0, 9f * Time.deltaTime * projDirection, 0);
@@ -66,6 +76,11 @@ public class ProjectileController : MonoBehaviour {
             Destroy(coll.gameObject);
             Destroy(gameObject);
             projColl.isTrigger = true;
+        }
+        else if (coll.gameObject.tag == "Player")
+        {
+            Destroy(coll.gameObject);
+            Destroy(gameObject);
         }
     }
 

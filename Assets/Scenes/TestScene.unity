@@ -215,6 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e457270f461512f40935d4378bc5faf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shot: 0
+  whatToCopy: {fileID: 463004, guid: ba8fb905c872ddb4c9bbd5cedc1fc579, type: 2}
 --- !u!61 &626081900
 BoxCollider2D:
   m_ObjectHideFlags: 0
