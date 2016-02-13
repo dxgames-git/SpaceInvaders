@@ -79,6 +79,7 @@ public class ProjectileController : MonoBehaviour {
         }
         else if (coll.gameObject.tag == "Player")
         {
+            gameObject.GetComponent<AudioSource>().Play();
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }
