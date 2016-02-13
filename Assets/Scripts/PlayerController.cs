@@ -59,5 +59,12 @@ public class PlayerController : MonoBehaviour, ProjectileLauncher
     {
         return "Player";
     }
-
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Projectile")
+        {
+            gameObject.GetComponent<AudioSource>().Play(0);
+        }
+        
+    }
 }
