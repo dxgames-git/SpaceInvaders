@@ -15,3 +15,5 @@ Todo General:
 - Bosses
 - Different types of aliens with different scores
 - Proper background and music
+- Animations and proper alien models
+- Background
