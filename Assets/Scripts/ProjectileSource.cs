@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ProjectileSource : MonoBehaviour {
-
+    /*
     public bool Shot;
     public string source;
 
@@ -33,5 +33,5 @@ public class ProjectileSource : MonoBehaviour {
         {
             this.Shot = playerScript.Shot;
         }
-	}
+	}*/
 }
