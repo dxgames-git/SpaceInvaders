@@ -15,7 +15,7 @@ GameObject:
   - 82: {fileID: 8257450}
   m_Layer: 0
   m_Name: AlienShoot
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a15a01d9a93216442bfc0fc147ffe7be, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -212,7 +212,11 @@ Prefab:
       objectReference: {fileID: 8300000, guid: a15a01d9a93216442bfc0fc147ffe7be, type: 3}
     - target: {fileID: 0}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

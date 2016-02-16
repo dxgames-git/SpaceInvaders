@@ -71,6 +71,7 @@ public class ProjectileController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        /*
         if (coll.gameObject.tag == "Aliens")
         {
             Destroy(coll.gameObject);
@@ -80,9 +81,11 @@ public class ProjectileController : MonoBehaviour {
         else if (coll.gameObject.tag == "Player")
         {
             gameObject.GetComponent<AudioSource>().Play();
+            coll.gameObject.GetComponent<AudioSource>().Play();
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }
+        */
     }
 
 }
