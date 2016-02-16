@@ -5,13 +5,14 @@ using System.Collections;
 public class EnemyController : MonoBehaviour, ProjectileLauncher
 {
 
-    private Transform Alien;
-    private float speed = 20f;
-    private float direction;
-    private float timePassed;
+    Transform Alien;
+    float speed = 20f;
+    float direction;
+    float timePassed;
+    bool ableToShoot = true;
 
+    Transform projectile;
     public bool Shot;
-    private Transform projectile;
     public Transform whatToCopy;
 
     // Use this for initialization
@@ -27,8 +28,11 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
         {
             transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
             timePassed = 0f;
-            Shot = true;
-            CreateNewProjectile();
+            if (ableToShoot)
+            {
+                Shot = true;
+                CreateNewProjectile();
+            }
         }
         timePassed += Time.deltaTime;
 
@@ -62,6 +66,7 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
         Destroy(gameObject.GetComponent<BoxCollider2D>());
         Destroy(gameObject.GetComponent<SpriteRenderer>());
         Destroy(gameObject.GetComponent<Rigidbody2D>());
+        ableToShoot = false;
     }
 
     public void CreateNewProjectile()

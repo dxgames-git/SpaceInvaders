@@ -5,12 +5,12 @@ public class PlayerController : MonoBehaviour, ProjectileLauncher
 {
 
     public float speed = 3f;
+    Rigidbody2D playerBody;
+    bool ableToShoot = true;
 
-    private Transform projectile;
+    Transform projectile;
     public Transform whatToCopy;
     public bool Shot;
-
-    private Rigidbody2D playerBody;
 
     // Use this for initialization
     void Start()
@@ -31,8 +31,11 @@ public class PlayerController : MonoBehaviour, ProjectileLauncher
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Shot = true;
-            CreateNewProjectile();
+            if (ableToShoot)
+            {
+                Shot = true;
+                CreateNewProjectile();
+            }
         }
     }
 
@@ -77,6 +80,7 @@ public class PlayerController : MonoBehaviour, ProjectileLauncher
         Destroy(gameObject.GetComponent<BoxCollider2D>());
         Destroy(gameObject.GetComponent<SpriteRenderer>());
         Destroy(gameObject.GetComponent<Rigidbody2D>());
+        ableToShoot = false;
     }
 
 }
