@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProjectileController : MonoBehaviour {
+public class ProjectileController : MonoBehaviour
+{
 
     public int projDirection;
 
@@ -33,21 +34,14 @@ public class ProjectileController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (playerScript.isShot())
         {
-            if (timePassed > 0.1f && timePassed < 0.3f)
-            {
-                projColl.isTrigger = false;
-            }
             if (timePassed > 1f)
             {
                 Destroy(gameObject);
             }
-        }
-        else
-        {
-            projColl.isTrigger = true;
         }
     }
 
@@ -67,25 +61,6 @@ public class ProjectileController : MonoBehaviour {
         {
             Destroy(transform.gameObject);
         }
-    }
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        /*
-        if (coll.gameObject.tag == "Aliens")
-        {
-            Destroy(coll.gameObject);
-            Destroy(gameObject);
-            projColl.isTrigger = true;
-        }
-        else if (coll.gameObject.tag == "Player")
-        {
-            gameObject.GetComponent<AudioSource>().Play();
-            coll.gameObject.GetComponent<AudioSource>().Play();
-            Destroy(coll.gameObject);
-            Destroy(gameObject);
-        }
-        */
     }
 
 }

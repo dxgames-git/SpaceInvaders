@@ -16,7 +16,8 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     public Transform whatToCopy;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         //Heesoo is a God  
         Shot = false;
         direction = 1f;
@@ -24,7 +25,8 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
 
     // Update is called once per frame
     void Update()
-    {   if (timePassed > 1)
+    {
+        if (timePassed > 1)
         {
             transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
             timePassed = 0f;
@@ -35,17 +37,10 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
             }
         }
         timePassed += Time.deltaTime;
-
-        //test
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Shot = true;
-            //CreateNewProjectile();
-        }
-
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    //void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Walls")
         {
@@ -53,12 +48,14 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
         }
         else if (coll.gameObject.tag == "Projectile")
         {
-            gameObject.GetComponent<AudioSource>().Play();
-            Destroy(coll.gameObject);
-            Kill();
-            Destroy(gameObject, 0.3f);
+            if (!coll.gameObject.name.Equals("AlienShoot(Clone)"))
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+                Destroy(coll.gameObject);
+                Kill();
+                Destroy(gameObject, 0.3f);
+            }
         }
-
     }
 
     void Kill()

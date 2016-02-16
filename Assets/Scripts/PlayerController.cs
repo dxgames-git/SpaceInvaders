@@ -63,14 +63,17 @@ public class PlayerController : MonoBehaviour, ProjectileLauncher
         return "Player";
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Projectile")
         {
-            gameObject.GetComponent<AudioSource>().Play();
-            Destroy(coll.gameObject);
-            Kill();
-            Destroy(gameObject, 0.3f);
+            if (!coll.gameObject.name.Equals("PlayerProjectile(Clone)"))
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+                Destroy(coll.gameObject);
+                Kill();
+                Destroy(gameObject, 0.3f);
+            }
         }
         
     }
