@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class EnemyController : MonoBehaviour, ProjectileLauncher
@@ -20,6 +21,12 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
 
     GridController control;
 
+    public Text scoreText;
+    public Text highScoreText;
+
+    public float scoreCount;
+    public float highScoreCount;
+    
     // Use this for initialization
     void Start ()
     {
@@ -39,6 +46,7 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
         //Heesoo is a God  
         Shot = false;
         direction = 1f;
+        scoreText.text = "Score : " + scoreCount;
     }
 
     // Update is called once per frame
