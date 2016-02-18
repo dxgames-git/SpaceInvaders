@@ -15,9 +15,12 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     public bool Shot;
     public Transform whatToCopy;
 
+    GridController control;
+
     // Use this for initialization
     void Start ()
     {
+        control = gameObject.GetComponentInParent<GridController>();
         //Heesoo is a God  
         Shot = false;
         direction = 1f;
@@ -26,17 +29,18 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     // Update is called once per frame
     void Update()
     {
+        timePassed = control.timePassed;
         if (timePassed > 1)
         {
-            transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
-            timePassed = 0f;
+            //transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
+            //timePassed = 0f;
             if (ableToShoot)
             {
                 Shot = true;
                 CreateNewProjectile();
             }
         }
-        timePassed += Time.deltaTime;
+        //timePassed += Time.deltaTime;
     }
 
     //void OnCollisionEnter2D(Collision2D coll)
@@ -44,7 +48,14 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     {
         if (coll.gameObject.tag == "Walls")
         {
-            direction *= -1f;
+            if (coll.gameObject.name.Equals("Wall_Right"))
+            {
+                control.direction = -1f;
+            }
+            else
+            {
+                control.direction = 1f;
+            }
         }
         else if (coll.gameObject.tag == "Projectile")
         {

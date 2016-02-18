@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 412028}
   - 212: {fileID: 21246734}
   - 114: {fileID: 11445736}
-  - 61: {fileID: 6121386}
   - 50: {fileID: 5097486}
   - 82: {fileID: 8240016}
+  - 58: {fileID: 5829652}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Aliens
@@ -27,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: -0.21, z: 0}
-  m_LocalScale: {x: 0.09976687, y: 0.09976687, z: 0.09976687}
+  m_LocalPosition: {x: -0.35, y: -0.21000004, z: 10}
+  m_LocalScale: {x: 0.099766865, y: 0.099766865, z: 0.099766865}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,8 +49,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6121386
-BoxCollider2D:
+--- !u!58 &5829652
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -60,9 +60,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 0d9af757c24b3a64ba8e7baa7726f2ef, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1, y: -0.05}
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28}
+  m_Radius: 3.5
 --- !u!82 &8240016
 AudioSource:
   m_ObjectHideFlags: 1
