@@ -8,21 +8,32 @@ public class GridController : MonoBehaviour {
     public float timePassed;
     public int whatToShoot;
 
+    public 
+    int[] intList;
+    int count = 6;
+
     // Use this for initialization
     void Start ()
     {
+        intList = new int[count];
+
         direction = 1f;
-        timePassed = 0f;
+        for (int i = 0; i < count; i++)
+        {
+            intList[i] = i;
+        }
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (timePassed > 1)
         {
-            transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
-            timePassed = 0f;
+            whatToShoot = Random.Range(0, count);
+            while (intList[whatToShoot] == 420)
+            {
+                whatToShoot = Random.Range(0, count);
+            }
         }
-        timePassed += Time.deltaTime;
     }
 }

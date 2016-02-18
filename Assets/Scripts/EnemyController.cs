@@ -11,6 +11,9 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     float timePassed;
     bool ableToShoot = true;
 
+    public bool randomShoot = false;
+    public int whatNum;
+
     Transform projectile;
     public bool Shot;
     public Transform whatToCopy;
@@ -21,6 +24,18 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     void Start ()
     {
         control = gameObject.GetComponentInParent<GridController>();
+        if (gameObject.name.Equals("Alien"))
+        {
+            whatNum = 0;
+        }
+        else if (gameObject.name.Length == 9)
+        {
+            whatNum = int.Parse(gameObject.name.Substring(7, 1));
+        }
+        else if (gameObject.name.Length == 10)
+        {
+            whatNum = int.Parse(gameObject.name.Substring(7, 2));
+        }
         //Heesoo is a God  
         Shot = false;
         direction = 1f;
@@ -29,18 +44,24 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     // Update is called once per frame
     void Update()
     {
-        timePassed = control.timePassed;
+        if (control.whatToShoot == whatNum)
+        {
+            randomShoot = true;
+        }
+        direction = control.direction;
+        control.timePassed = timePassed;
         if (timePassed > 1)
         {
-            //transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
-            //timePassed = 0f;
-            if (ableToShoot)
+            transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
+            if (ableToShoot && randomShoot)
             {
                 Shot = true;
                 CreateNewProjectile();
+                randomShoot = false;
             }
+            timePassed = 0f;
         }
-        //timePassed += Time.deltaTime;
+        timePassed += Time.deltaTime;
     }
 
     //void OnCollisionEnter2D(Collision2D coll)
@@ -61,6 +82,7 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
         {
             if (!coll.gameObject.name.Equals("AlienShoot(Clone)"))
             {
+                control.intList[whatNum] = 420;
                 gameObject.GetComponent<AudioSource>().Play();
                 Destroy(coll.gameObject);
                 Kill();
