@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GridController : MonoBehaviour {
+public class GridController : MonoBehaviour
+{
 
     float speed = 20f;
     public float direction;
     public float timePassed;
     public int whatToShoot;
 
-    public 
+    public
     int[] intList;
     int count = 6;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         intList = new int[count];
 
@@ -22,7 +23,7 @@ public class GridController : MonoBehaviour {
         {
             intList[i] = i;
         }
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -36,4 +37,5 @@ public class GridController : MonoBehaviour {
             }
         }
     }
+
 }
