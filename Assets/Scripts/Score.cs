@@ -24,6 +24,10 @@ public class Score : MonoBehaviour {
 	void Update ()
     {
         scoreText.text = "Score : " + scoreCount;
+        if (scoreText.text.Equals("Score : 290"))
+        {
+            Application.LoadLevel(3);
+        }
         StoreHighscore(scoreCount);
         highScoreText.text = "High Score : " + highScoreCount;
         if (lives != 0)
