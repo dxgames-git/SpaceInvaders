@@ -10,7 +10,9 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     float speed = 20f;
     float direction;
     float timePassed;
+    float shootTimePassed;
     bool ableToShoot = true;
+
 
     public bool randomShoot = false;
     public int whatNum;
@@ -46,21 +48,33 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     // Update is called once per frame
     void Update()
     {
+        shootTimePassed = control.timePassed;
         if (control.intList[control.whatToShoot] == whatNum)
         {
             randomShoot = true;
         }
         direction = control.direction;
         control.timePassed = timePassed;
-        if (timePassed > 1)
+
+        if (shootTimePassed > 0.9f)
         {
-            transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
             if (ableToShoot && randomShoot)
             {
                 Shot = true;
                 CreateNewProjectile();
                 randomShoot = false;
             }
+        }
+
+        if (timePassed > 1)
+        {
+            transform.position += new Vector3(direction * Time.deltaTime * speed, 0, 0);
+            /*if (ableToShoot && randomShoot)
+            {
+                Shot = true;
+                CreateNewProjectile();
+                randomShoot = false;
+            }*/
             timePassed = 0f;
         }
         timePassed += Time.deltaTime;

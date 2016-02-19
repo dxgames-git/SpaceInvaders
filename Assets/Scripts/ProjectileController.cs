@@ -6,6 +6,7 @@ public class ProjectileController : MonoBehaviour
 
     public int projDirection;
 
+    int playerCoef;
     float timePassed;
     Collider2D projColl;
     ProjectileLauncher playerScript;
@@ -21,11 +22,13 @@ public class ProjectileController : MonoBehaviour
         {
             playerScript = theShooter.GetComponent<EnemyController>();
             projDirection = -1;
+            playerCoef = 1;
         }
         else
         {
             playerScript = theShooter.GetComponent<PlayerController>();
             projDirection = 1;
+            playerCoef = 2;
         }
         DestroyImmediate(test);
 
@@ -54,7 +57,7 @@ public class ProjectileController : MonoBehaviour
                 playerScript.changeShot(false);
                 timePassed = 0f;
             }
-            transform.position += new Vector3(0, 9f * Time.deltaTime * projDirection, 0);
+            transform.position += new Vector3(0, 9f * Time.deltaTime * playerCoef * projDirection, 0);
             timePassed += Time.deltaTime;
         }
         else

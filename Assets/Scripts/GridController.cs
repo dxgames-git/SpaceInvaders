@@ -5,6 +5,7 @@ public class GridController : MonoBehaviour
 {
 
     float speed = 20f;
+
     public Transform Alien;
     public float direction;
     public float timePassed;
@@ -56,14 +57,26 @@ public class GridController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timePassed > 1)
+        if (timePassed > 0.9f)
         {
             whatToShoot = Random.Range(0, count);
             while (intList[whatToShoot] == 420)
             {
-                whatToShoot = Random.Range(0, count);
+                whatToShoot++;
+                if (whatToShoot > count)
+                {
+                    break;
+                }
+                //whatToShoot = Random.Range(0, count);
+            }
+            timePassed = 0;
+            if (!(whatToShoot > count))
+            {
+                AudioSource toPlay = GameObject.Find("invaderkilled").GetComponent<AudioSource>();
+                toPlay.PlayDelayed(0.05f);
             }
         }
+        timePassed += Time.deltaTime;
     }
 
 }
