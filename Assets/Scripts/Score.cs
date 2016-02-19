@@ -24,7 +24,7 @@ public class Score : MonoBehaviour {
 	void Update ()
     {
         scoreText.text = "Score : " + scoreCount;
-        if (scoreText.text.Equals("Score : 290"))
+        if (scoreText.text.Equals("Score : 175"))
         {
             Application.LoadLevel(3);
         }
