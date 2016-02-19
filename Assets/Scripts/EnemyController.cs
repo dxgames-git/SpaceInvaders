@@ -114,7 +114,7 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
 
     void Kill()
     {
-        Destroy(gameObject.GetComponent<BoxCollider2D>());
+        Destroy(gameObject.GetComponent<CircleCollider2D>());
         Destroy(gameObject.GetComponent<SpriteRenderer>());
         Destroy(gameObject.GetComponent<Rigidbody2D>());
         ableToShoot = false;
