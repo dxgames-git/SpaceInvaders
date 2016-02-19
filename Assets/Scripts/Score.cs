@@ -30,7 +30,8 @@ public class Score : MonoBehaviour {
         livesLeft.text = "Lives : " + lives;
         else
         {
-            livesLeft.text = "GAME OVER BITCH";
+            //livesLeft.text = "GAME OVER BITCH";
+            Application.LoadLevel(2);
         }
     }
 
