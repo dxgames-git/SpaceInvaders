@@ -20,7 +20,7 @@ public class GridController : MonoBehaviour
         int offsety = 1;
         int counter = 0;
 
-        Vector3 origin = new Vector3(-5, 1, 0);
+        Vector3 origin = new Vector3(-6, 0, 0);
 
         for (int i = 0; i < 7; i++)
         {

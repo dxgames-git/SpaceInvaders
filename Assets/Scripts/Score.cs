@@ -7,17 +7,41 @@ public class Score : MonoBehaviour {
 
     public Text scoreText;
     public Text highScoreText;
+    public Text livesLeft;
 
-    public float scoreCount;
-    public float highScoreCount;
+    public int scoreCount;
+    public int highScoreCount;
+    public int lives;
     // Use this for initialization
-    void Start () {
-	
-	}
+    void Start ()
+    {
+        lives = 3;
+        scoreCount = 0;
+        highScoreCount = PlayerPrefs.GetInt("highscore", 0);
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         scoreText.text = "Score : " + scoreCount;
+        StoreHighscore(scoreCount);
         highScoreText.text = "High Score : " + highScoreCount;
+        if (lives != 0)
+        livesLeft.text = "Lives : " + lives;
+        else
+        {
+            livesLeft.text = "GAME OVER BITCH";
+        }
     }
+
+    void StoreHighscore(int newHighscore)
+    {
+        int oldHighscore = PlayerPrefs.GetInt("highscore", 0);
+        if (newHighscore > oldHighscore)
+        {
+            PlayerPrefs.SetInt("highscore", newHighscore);
+            highScoreCount = newHighscore;
+        }
+    }
+
 }

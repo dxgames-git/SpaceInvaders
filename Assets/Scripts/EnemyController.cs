@@ -87,6 +87,11 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
                 control.intList[whatNum] = 420;
                 gameObject.GetComponent<AudioSource>().Play();
                 Destroy(coll.gameObject);
+
+                Score theScore = GameObject.Find("ScoreManager").GetComponent<Score>();
+                theScore.scoreCount += 5;
+
+
                 Kill();
                 Destroy(gameObject, 0.3f);
             }

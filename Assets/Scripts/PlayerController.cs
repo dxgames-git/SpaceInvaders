@@ -71,6 +71,13 @@ public class PlayerController : MonoBehaviour, ProjectileLauncher
             {
                 gameObject.GetComponent<AudioSource>().Play();
                 Destroy(coll.gameObject);
+                Score theScore = GameObject.Find("ScoreManager").GetComponent<Score>();
+                theScore.lives--;
+                if (theScore.lives > 0)
+                {
+                    Vector3 pos = new Vector3(-0.15f, -3.87f, 0);
+                    Instantiate(transform.gameObject, pos, transform.rotation);
+                }
                 Kill();
                 Destroy(gameObject, 0.3f);
             }
