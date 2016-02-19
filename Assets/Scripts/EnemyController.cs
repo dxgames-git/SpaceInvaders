@@ -20,22 +20,13 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
     public Transform whatToCopy;
 
     GridController control;
-
-    public Text scoreText;
-    public Text highScoreText;
-
-    public float scoreCount;
-    public float highScoreCount;
     
     // Use this for initialization
     void Start ()
     {
-        control = gameObject.GetComponentInParent<GridController>();
-        if (gameObject.name.Equals("Alien"))
-        {
-            whatNum = 0;
-        }
-        else if (gameObject.name.Length == 9)
+        GameObject theGrid = GameObject.Find("Grid");
+        control = theGrid.GetComponent<GridController>();
+        if (gameObject.name.Length == 9)
         {
             whatNum = int.Parse(gameObject.name.Substring(7, 1));
         }
@@ -43,16 +34,19 @@ public class EnemyController : MonoBehaviour, ProjectileLauncher
         {
             whatNum = int.Parse(gameObject.name.Substring(7, 2));
         }
+        else
+        {
+            whatNum = 0;
+        }
         //Heesoo is a God  
         Shot = false;
         direction = 1f;
-        scoreText.text = "Score : " + scoreCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (control.whatToShoot == whatNum)
+        if (control.intList[control.whatToShoot] == whatNum)
         {
             randomShoot = true;
         }
